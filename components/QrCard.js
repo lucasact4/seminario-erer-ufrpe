@@ -7,13 +7,12 @@ export default {
     },
     computed: {
         linkDestino() {
-            // Extrai a URL final (o que vem depois de 'data=') da string da API
             const match = this.qrUrl.match(/data=(.*)/);
             return match ? match[1] : '#';
         },
         qrUrlMaior() {
-            // Troca o tamanho da imagem gerada pela API para alta resolução
-            return this.qrUrl.replace('size=180x180', 'size=250x250');
+            // Aumentado para 300x300
+            return this.qrUrl.replace('size=180x180', 'size=350x350');
         }
     },
     template: `

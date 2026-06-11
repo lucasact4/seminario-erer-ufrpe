@@ -173,8 +173,8 @@ li::before {
 }
 
 .qr-image {
-    width: 220px;
-    height: 220px;
+    width: 300px;
+    height: 300px;
     border-radius: 10px;
     margin-bottom: 1.5rem;
     border: 1px solid rgba(0,0,0,0.1);
