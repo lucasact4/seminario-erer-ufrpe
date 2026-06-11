@@ -1,6 +1,5 @@
 import { createApp } from 'vue';
 
-// Importa os componentes exportados como módulos
 import Slide from '../../components/Slide.js';
 import QrCard from '../../components/QrCard.js';
 
@@ -21,10 +20,12 @@ const app = createApp({
         }
     },
     mounted() {
-        window.addEventListener('keydown', this.handleKeydown);
+        // O .bind(this) garante que o Vue consiga ler os métodos através do teclado
+        this._keyListener = this.handleKeydown.bind(this);
+        window.addEventListener('keydown', this._keyListener);
     },
     unmounted() {
-        window.removeEventListener('keydown', this.handleKeydown);
+        window.removeEventListener('keydown', this._keyListener);
     },
     methods: {
         nextSlide() {
@@ -38,9 +39,12 @@ const app = createApp({
             }
         },
         handleKeydown(e) {
-            if (e.key === 'ArrowRight' || e.key === 'Space') {
+            // Permite usar a Seta para Direita, Espaço ou Enter para avançar
+            if (e.key === 'ArrowRight' || e.key === 'Space' || e.key === 'Enter') {
                 this.nextSlide();
-            } else if (e.key === 'ArrowLeft') {
+            } 
+            // Permite usar a Seta para Esquerda para voltar
+            else if (e.key === 'ArrowLeft') {
                 this.prevSlide();
             }
         }

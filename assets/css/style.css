@@ -32,7 +32,11 @@ body {
     width: 100%; height: 100%;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    /* Adicionada transição de escala (zoom) para a troca de páginas */
+    transform: scale(0.95) translateY(10px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                visibility 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,6 +47,7 @@ body {
 .slide.active {
     opacity: 1;
     visibility: visible;
+    transform: scale(1) translateY(0);
     z-index: 10;
 }
 
@@ -223,3 +228,57 @@ li::before {
 
 .page-counter { position: fixed; bottom: 2rem; left: 2rem; z-index: 100; font-size: 1.1rem; font-weight: 600; color: var(--accent-tertiary); background: var(--bg-card); padding: 0.5rem 1rem; border-radius: 20px; box-shadow: 0 4px 10px rgba(74, 46, 27, 0.1); backdrop-filter: blur(5px); }
 .progress-bar { position: fixed; bottom: 0; left: 0; height: 5px; background: var(--accent-primary); transition: width 0.3s ease; z-index: 100; }
+
+/* =========================================
+   UPGRADE DE ANIMAÇÕES VIVAS (STAGGERED)
+   ========================================= */
+
+/* Os elementos nascem transparentes e fora do lugar */
+.slide h1, .slide h2, .slide .tag, .slide p, .slide ul, 
+.slide .card, .slide .quote-box, .slide .qr-container, .slide img:not(.qr-image) {
+    opacity: 0;
+}
+
+/* Quando o slide ativa, disparamos as animações com delays calculados */
+.slide.active h1, 
+.slide.active h2 { animation: slideUpFade 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s both; }
+.slide.active .tag { animation: slideUpFade 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.05s both; }
+.slide.active p, 
+.slide.active ul { animation: slideUpFade 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s both; }
+
+.slide.active .card,
+.slide.active .quote-box,
+.slide.active .qr-container { animation: slideUpFade 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both; }
+
+/* Grid de 3 colunas (Bloco 2) aparecendo em cascata da esquerda pra direita */
+.slide.active .grid-3 .card:nth-child(1) { animation-delay: 0.3s; }
+.slide.active .grid-3 .card:nth-child(2) { animation-delay: 0.4s; }
+.slide.active .grid-3 .card:nth-child(3) { animation-delay: 0.5s; }
+
+/* Grid de 2 colunas escorregando das laterais (Efeito Premium) */
+.slide.active .content-grid > div:nth-child(1) { animation: slideRightFade 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both; }
+.slide.active .content-grid > div:nth-child(2) { animation: slideLeftFade 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s both; }
+
+/* Membros da equipe aparecendo um por um na capa */
+.slide.active .team-member:nth-child(1) { animation: slideUpFade 0.4s ease 0.3s both; }
+.slide.active .team-member:nth-child(2) { animation: slideUpFade 0.4s ease 0.4s both; }
+.slide.active .team-member:nth-child(3) { animation: slideUpFade 0.4s ease 0.5s both; }
+.slide.active .team-member:nth-child(4) { animation: slideUpFade 0.4s ease 0.6s both; }
+.slide.active .team-member:nth-child(5) { animation: slideUpFade 0.4s ease 0.7s both; }
+
+/* Imagens flutuantes */
+.slide.active img:not(.qr-image) { animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both; }
+
+/* Engine das Keyframes */
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideRightFade {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideLeftFade {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+}

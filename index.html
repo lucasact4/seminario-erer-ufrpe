@@ -229,28 +229,38 @@
             <slide :index="12" :current="currentSlide" theme="slide-light">
                 <span class="tag">Exemplo Prático 1 (Bloco 3)</span>
                 <h2>Comunidade e Empoderamento</h2>
-                <div class="content-grid" style="align-items: flex-start;">
-                    <div>
-                        <p><strong>O Caso das Criadoras Pioneiras:</strong><br>
+                <div class="content-grid" style="align-items: flex-start; gap: 4rem;">
+                    
+                    <!-- Coluna da Esquerda: Apenas Textos -->
+                    <div style="padding-top: 1rem; margin-top: auto; margin-bottom: auto;">
+                        <p style="font-size: 1.3rem;"><strong>O Caso das Criadoras Pioneiras:</strong><br>
                         Quando a internet era dominada por padrões eurocêntricos, mulheres como Gabi Oliveira e Nataly Neri usaram o YouTube para falar de estética negra.</p>
-                        <p>Ao ensinarem a cuidar do cabelo crespo, elas criaram as <strong>"comunidades de apoio"</strong> citadas na pesquisa, ajudando na autoestima coletiva.</p>
                         
-                        <!-- Nova imagem da Gabi de Pretas inserida aqui com bordas arredondadas -->
-                        <img src="./images/@gabidepretas.png" alt="Perfil Gabi de Pretas" style="width: 100%; border-radius: 15px; margin-top: 1.5rem; box-shadow: 0 10px 20px rgba(74,46,27,0.15); object-fit: cover; max-height: 250px;">
+                        <p style="font-size: 1.3rem; margin-top: 1.5rem;">Ao ensinarem a cuidar do cabelo crespo, elas criaram as <strong>"comunidades de apoio"</strong> citadas na pesquisa, ajudando na autoestima coletiva.</p>
                     </div>
-                    <div class="card" style="background-color: var(--accent-tertiary); color: var(--text-light);">
-                        <h3 style="color: var(--highlight); font-size: 1.5rem;">Perfis de Referência</h3>
-                        <div class="instagram-handles" style="flex-direction: column;">
-                            <div class="ig-handle">
-                                <i class="fab fa-instagram"></i>
-                                <span>@gabidepretas<br><small>(Gabi Oliveira)</small></span>
-                            </div>
-                            <div class="ig-handle">
-                                <i class="fab fa-instagram"></i>
-                                <span>@natalyneri<br><small>(Afros e Afins)</small></span>
+                    
+                    <!-- Coluna da Direita: Card + Imagem para balancear o layout -->
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div class="card" style="background-color: var(--accent-tertiary); height: auto; padding: 2rem;">
+                            <h3 style="color: var(--highlight); font-size: 1.5rem; margin-bottom: 1rem;">Perfis de Referência</h3>
+                            <div class="instagram-handles" style="flex-direction: column; gap: 1rem; margin-top: 0;">
+                                <!-- Links do Instagram adicionados -->
+                                <a href="https://www.instagram.com/gabidepretas" target="_blank" class="ig-handle" style="text-decoration: none; color: var(--text-light); transition: transform 0.2s;">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>@gabidepretas<br><small style="color: rgba(253, 251, 247, 0.7);">(Gabi Oliveira)</small></span>
+                                </a>
+                                
+                                <a href="https://www.instagram.com/natalyneri" target="_blank" class="ig-handle" style="text-decoration: none; color: var(--text-light); transition: transform 0.2s;">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>@natalyneri<br><small style="color: rgba(253, 251, 247, 0.7);">(Afros e Afins)</small></span>
+                                </a>
                             </div>
                         </div>
+                        
+                        <!-- Imagem reposicionada para preencher o espaço vazio -->
+                        <img src="./images/@gabidepretas.png" alt="Perfil Gabi de Pretas" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 20px rgba(74,46,27,0.15); object-fit: cover; max-height: 250px;">
                     </div>
+                    
                 </div>
             </slide>
 
